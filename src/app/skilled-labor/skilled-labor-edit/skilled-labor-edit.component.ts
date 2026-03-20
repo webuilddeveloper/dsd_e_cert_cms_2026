@@ -22,6 +22,7 @@ import { PermissionService } from "src/app/shared/permission.service";
   styleUrls: ["./skilled-labor-edit.component.css"],
 })
 export class SkilledLaborEditComponent implements OnInit {
+  listAgency: any = [];
   listCategory: any = [];
   listRegister: any = [];
   editModel: any = { fileUrl: "", file: [], language: "th" };
@@ -77,8 +78,12 @@ export class SkilledLaborEditComponent implements OnInit {
         else this.permission = this.permission + "," + model[index].title;
       }
 
-      this.permissionList = JSON.parse(localStorage.getItem("skilledLaborPage"));
+      this.permissionList = JSON.parse(
+        localStorage.getItem("skilledLaborPage"),
+      );
     }
+
+    this.readAgency(this.editModel.language);
 
     // this.editModel.image = [];
     this.activetedRoute.queryParams.subscribe((params) => {
@@ -146,17 +151,17 @@ export class SkilledLaborEditComponent implements OnInit {
         (data) => {
           let model: any = {};
           model = data;
-          if (this.editModel.gallery.length > 0) {
-            this.editModel.gallery.forEach((element) => {
-              element.reference = model.objectData.code;
-              this.serviceProviderService
-                .post("skilledLabor/gallery/create", element)
-                .subscribe(
-                  (data) => {},
-                  (err) => {},
-                );
-            });
-          }
+          // if (this.editModel.gallery.length > 0) {
+          //   this.editModel.gallery.forEach((element) => {
+          //     element.reference = model.objectData.code;
+          //     this.serviceProviderService
+          //       .post("skilledLabor/gallery/create", element)
+          //       .subscribe(
+          //         (data) => {},
+          //         (err) => {},
+          //       );
+          //   });
+          // }
 
           /** spinner ends after 5 seconds */
           this.spinner.hide();
@@ -177,7 +182,10 @@ export class SkilledLaborEditComponent implements OnInit {
   read() {
     this.spinner.show();
     this.serviceProviderService
-      .post("skilledLabor/read", { code: this.code, permission: this.permission })
+      .post("skilledLabor/read", {
+        code: this.code,
+        permission: this.permission,
+      })
       .subscribe(
         (data) => {
           let model: any = {};
@@ -199,7 +207,7 @@ export class SkilledLaborEditComponent implements OnInit {
             this.editModel.category = this.editModel.categoryList[0].code;
 
           this.readCategory(this.editModel.language);
-          this.galleryRead();
+          // this.galleryRead();
 
           // <----- Organization
           this.editModel.chkManualOG = true; // <----- Organization
@@ -312,18 +320,18 @@ export class SkilledLaborEditComponent implements OnInit {
             .post("skilledLabor/gallery/delete", this.editModel)
             .subscribe(
               (data) => {
-                if (this.editModel.gallery.length > 0) {
-                  this.editModel.gallery.forEach((element) => {
-                    // element.code = this.editModel.code; //เพิ่ม set active false ทั้วหมด
-                    element.reference = this.editModel.code;
-                    this.serviceProviderService
-                      .post("skilledLabor/gallery/create", element)
-                      .subscribe(
-                        (data) => {},
-                        (err) => {},
-                      );
-                  });
-                }
+                // if (this.editModel.gallery.length > 0) {
+                //   this.editModel.gallery.forEach((element) => {
+                //     // element.code = this.editModel.code; //เพิ่ม set active false ทั้วหมด
+                //     element.reference = this.editModel.code;
+                //     this.serviceProviderService
+                //       .post("skilledLabor/gallery/create", element)
+                //       .subscribe(
+                //         (data) => {},
+                //         (err) => {},
+                //       );
+                //   });
+                // }
               },
               (err) => {},
             );
@@ -359,6 +367,30 @@ export class SkilledLaborEditComponent implements OnInit {
             this.listCategory = [];
             model.objectData.forEach((element) => {
               this.listCategory.push({
+                value: element.code,
+                display: element.title,
+              });
+            });
+          },
+          (err) => {},
+        );
+    }
+  }
+
+  readAgency(param) {
+    this.editModel.language = param;
+    if (this.editModel.language != "") {
+      this.serviceProviderService
+        .post("masterDropdown/readAgency", {
+          language: param,
+        })
+        .subscribe(
+          (data) => {
+            let model: any = {};
+            model = data;
+            this.listAgency = [];
+            model.objectData.forEach((element) => {
+              this.listAgency.push({
                 value: element.code,
                 display: element.title,
               });
@@ -1096,6 +1128,6 @@ export class SkilledLaborEditComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(["skilledLabor"], { skipLocationChange: true });
+    this.router.navigate(["skilled-labor"], { skipLocationChange: true });
   }
 }

@@ -39,10 +39,12 @@
                                 </div>
                                 <div class="col s6" [hidden]="hiddenComment">
                                     <div class="col s6">
-                                        <cbtn [label]="'Export Excel'" [color]="'green'" [icon]="'file_download'" (click)="exportAsXLSX()"></cbtn>
+                                        <cbtn [label]="'Export Excel'" [color]="'green'" [icon]="'file_download'"
+                                            (click)="exportAsXLSX()"></cbtn>
                                     </div>
                                     <div class="col s6">
-                                        <cbtn [label]="'กลับ'" [color]="'blue'" (click)="hiddenComment = !hiddenComment">
+                                        <cbtn [label]="'กลับ'" [color]="'blue'"
+                                            (click)="hiddenComment = !hiddenComment">
                                         </cbtn>
                                     </div>
                                 </div>
@@ -50,7 +52,8 @@
                                     <div class="col s6">
                                     </div>
                                     <div class="col s6">
-                                        <cbtn [label]="'รายการ comment'" [color]="'blue'" (click)="hiddenComment = !hiddenComment">
+                                        <cbtn [label]="'รายการ comment'" [color]="'blue'"
+                                            (click)="hiddenComment = !hiddenComment">
                                         </cbtn>
                                     </div>
                                 </div>
@@ -100,28 +103,38 @@
                                     </div>
 
                                     <div class="row">
-                                      <div class="col s12">
-                                          <cdp (cModel)="editModel.dateStart = $event" [label]="'วันที่เริ่มต้น'"
-                                              [data]="editModel.dateStart"></cdp>
-                                      </div>
-                                      <div class="col s12">
-                                          <cdp (cModel)="editModel.dateEnd = $event" [label]="'วันที่สิ้นสุด'"
-                                              [data]="editModel.dateEnd"></cdp>
-                                      </div>
-                                  </div>
+                                        <div class="col s12">
+                                            <cdp (cModel)="editModel.dateStart = $event" [label]="'วันที่เริ่มต้น'"
+                                                [data]="editModel.dateStart"></cdp>
+                                        </div>
+                                        <div class="col s12">
+                                            <cdp (cModel)="editModel.dateEnd = $event" [label]="'วันที่สิ้นสุด'"
+                                                [data]="editModel.dateEnd"></cdp>
+                                        </div>
+                                    </div>
 
                                     <div class="row">
+
+                                        <div class="col s12" style="padding-bottom: 20px;">
+                                            <csop (cModel)="editModel.agency = $event" [label]="'หน่วยงาน : '"
+                                                [data]="editModel.agency" [sources]="listAgency">
+                                            </csop>
+                                        </div>
+
                                         <div class="col s12">
-                                            <citxt (cModel)="editModel.textButton = $event" [label]="'ชื่อปุ่มแหล่งอ้างอิง : '"
-                                                [data]="editModel.textButton || ''"></citxt>
+                                            <citxt (cModel)="editModel.textButton = $event"
+                                                [label]="'ชื่อปุ่มแหล่งอ้างอิง : '" [data]="editModel.textButton || ''">
+                                            </citxt>
                                         </div>
                                         <div class="col s12">
-                                            <citxt (cModel)="editModel.linkUrl = $event" [label]="'ลิ้งค์แหล่งอ้างอิง : '"
-                                                [data]="editModel.linkUrl || ''"></citxt>
+                                            <citxt (cModel)="editModel.linkUrl = $event"
+                                                [label]="'ลิ้งค์แหล่งอ้างอิง : '" [data]="editModel.linkUrl || ''">
+                                            </citxt>
                                         </div>
                                         <div class="col s12">
-                                          <cinum (cModel)="editModel.numberOfDayNotification = $event" [label]="'แจ้งเตือนล่วงหน้า(วัน) : '"
-                                              [data]="editModel.numberOfDayNotification || 1"></cinum>
+                                            <cinum (cModel)="editModel.numberOfDayNotification = $event"
+                                                [label]="'แจ้งเตือนล่วงหน้า(วัน) : '"
+                                                [data]="editModel.numberOfDayNotification || 1"></cinum>
                                         </div>
                                     </div>
 
@@ -131,11 +144,12 @@
                                     <div class="col s5">
                                         <cds (cModel)="editModel.image = $event"
                                             [label]="'* รูปปก (คลิกเลือกภาพ/ลากวางภาพที่นี่)'"
-                                            [data]="[{ imageUrl: this.editModel.imageUrl || '' }]" [code]="'event'"></cds>
+                                            [data]="[{ imageUrl: this.editModel.imageUrl || '' }]" [code]="'event'">
+                                        </cds>
                                     </div>
-                                <div class="col s12" style="color: red;padding-top: 20px;">
-                                    <span>*Maximum 10 MB</span>
-                                </div>
+                                    <div class="col s12" style="color: red;padding-top: 20px;">
+                                        <span>*Maximum 10 MB</span>
+                                    </div>
                                 </div>
 
 
@@ -150,60 +164,63 @@
                             <!-- BEGIN: Do Something This Here -->
 
                             <div style="overflow-x:auto;">
-                            <table id="users-list-datatable" class="bordered centered striped">
-                                <thead>
-                                    <tr>
-                                        <th>ลำดับ</th>
-                                        <th>ความคิดเห็น</th>
-                                        <th>ชื่อผู้ใช้</th>
-                                        <th>วันที่</th>
-                                        <th>จัดการความคิดเห็น</th>
-                                        <th>ตรวจสอบความคิดเห็น</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let i of commentList; let idx = index">
-                                        <td>
-                                            <div class="w30">
-                                                {{idx + 1}}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="w300">
-                                                {{i.description}}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="w200">
-                                                {{i.createBy}}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="w150">
-                                                {{i.createDate | datetimeFormat}}
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="w200 green-text" [hidden]="!i.isActive">
-                                                <cbtn [label]="'อนุญาตให้แสดงความคิดเห็น'" [color]="'blue'" (click)="manageComment(i)">
-                                                </cbtn>
-                                            </div>
-                                            <div class="w200 red-text" [hidden]="i.isActive">
-                                                <!-- <cbtn [label]="'ไม่อนุญาตให้แสดงความคิดเห็น'" [color]="'red'" (click)="verifyComment(i)">
+                                <table id="users-list-datatable" class="bordered centered striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ลำดับ</th>
+                                            <th>ความคิดเห็น</th>
+                                            <th>ชื่อผู้ใช้</th>
+                                            <th>วันที่</th>
+                                            <th>จัดการความคิดเห็น</th>
+                                            <th>ตรวจสอบความคิดเห็น</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let i of commentList; let idx = index">
+                                            <td>
+                                                <div class="w30">
+                                                    {{idx + 1}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="w300">
+                                                    {{i.description}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="w200">
+                                                    {{i.createBy}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="w150">
+                                                    {{i.createDate | datetimeFormat}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="w200 green-text" [hidden]="!i.isActive">
+                                                    <cbtn [label]="'อนุญาตให้แสดงความคิดเห็น'" [color]="'blue'"
+                                                        (click)="manageComment(i)">
+                                                    </cbtn>
+                                                </div>
+                                                <div class="w200 red-text" [hidden]="i.isActive">
+                                                    <!-- <cbtn [label]="'ไม่อนุญาตให้แสดงความคิดเห็น'" [color]="'red'" (click)="verifyComment(i)">
                                                 </cbtn> -->
-                                                <cbtn [label]="'ไม่อนุญาตให้แสดงความคิดเห็น'" [color]="'red'" (click)="manageComment(i)">
-                                                </cbtn>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="w150">
-                                                <cbtn [label]="'ตรวจสอบ'" [color]="'blue'" (click)="verifyComment(i)">
-                                                </cbtn>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                                    <cbtn [label]="'ไม่อนุญาตให้แสดงความคิดเห็น'" [color]="'red'"
+                                                        (click)="manageComment(i)">
+                                                    </cbtn>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="w150">
+                                                    <cbtn [label]="'ตรวจสอบ'" [color]="'blue'"
+                                                        (click)="verifyComment(i)">
+                                                    </cbtn>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
                             <!-- <div class="row">
@@ -290,17 +307,17 @@
                                 </div>
                                 <div class="col s1"></div>
                                 <div class="col s4">
-                                  <div class="col s12">
-                                      <cdsf (cModel)="editModel.file = $event"
-                                          [label]="'ไฟล์ PDF (เลือกไฟล์ PDF , Excel/วางไฟล์ PDF , Excelที่นี่)'"
-                                          [data]="[{ imageUrl: editModel.fileUrl == '' ? '' : imageFile }]"
-                                          [code]="'event'">
-                                      </cdsf>
-                                  </div>
-                                  <div class="col s12" style="color: red;padding-top: 20px;">
-                                      <span>*Maximum 100 MB</span>
-                                  </div>
-                              </div>
+                                    <div class="col s12">
+                                        <cdsf (cModel)="editModel.file = $event"
+                                            [label]="'ไฟล์ PDF (เลือกไฟล์ PDF , Excel/วางไฟล์ PDF , Excelที่นี่)'"
+                                            [data]="[{ imageUrl: editModel.fileUrl == '' ? '' : imageFile }]"
+                                            [code]="'event'">
+                                        </cdsf>
+                                    </div>
+                                    <div class="col s12" style="color: red;padding-top: 20px;">
+                                        <span>*Maximum 100 MB</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- END: Do Something This Here -->
@@ -342,77 +359,79 @@
 </div>
 
 <div class="col s3" style="padding-left: 0px !important;">
-  <div class="row">
-    <div class="col s12">
-      <div class="container">
-        <section class="users-list-wrapper section">
-          <div class="users-list-filter">
+    <div class="row">
+        <div class="col s12">
+            <div class="container">
+                <section class="users-list-wrapper section">
+                    <div class="users-list-filter">
 
-            <!-- Header -->
-            <div class="card-panel" style="margin-bottom: 0px; background-color:lavender; vertical-align: text-top;">
-              <div class="row">
-                <div class="col s8">
-                  <span style="position: relative; float:left; font-size: 1em; padding-left: 10px; padding-top: 10px;">
-                    ตั้งค่าการแสดงผล *
-                  </span>
-                </div>
-              </div>
-            </div>
+                        <!-- Header -->
+                        <div class="card-panel"
+                            style="margin-bottom: 0px; background-color:lavender; vertical-align: text-top;">
+                            <div class="row">
+                                <div class="col s8">
+                                    <span
+                                        style="position: relative; float:left; font-size: 1em; padding-left: 10px; padding-top: 10px;">
+                                        ตั้งค่าการแสดงผล *
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="card-panel" style="margin-bottom: 0px; margin-top: 0px;">
-              <div class="row">
-                <div class="col s12" style="padding-bottom: 40px !important;">
-                  <ccb (cModel)="editModel.isActive = $event" [label]="'เผยแพร่'"
-                    [data]="editModel.isActive"></ccb>
-                  <ccb (cModel)="editModel.isHighlight = $event" [label]="'รายการแนะนำ'"
-                    [data]="editModel.isHighlight"></ccb>
-                  <ccb (cModel)="editModel.isPublic = $event" [label]="'เปิดสาธารณะ'"
-                    [data]="editModel.isPublic"></ccb>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col s12">
-        <div class="container">
-            <section class="users-list-wrapper section">
-                <div class="users-list-filter">
-
-                    <!-- Header -->
-                    <div class="card-panel"
-                        style="margin-bottom: 0px; background-color:lavender; vertical-align: text-top;">
-
-                        <div class="row">
-                            <div class="col s8">
-                                <!-- <i class="material-icons header-icon">
-                                    border_color
-                                </i> -->
-                                <span
-                                    style="position: relative; float:left; font-size: 1em; padding-left: 10px; padding-top: 10px;">
-                                    สิทธิ์การเห็นเนื้อหา *
-                                </span>
+                        <div class="card-panel" style="margin-bottom: 0px; margin-top: 0px;">
+                            <div class="row">
+                                <div class="col s12" style="padding-bottom: 40px !important;">
+                                    <ccb (cModel)="editModel.isActive = $event" [label]="'เผยแพร่'"
+                                        [data]="editModel.isActive"></ccb>
+                                    <ccb (cModel)="editModel.isHighlight = $event" [label]="'รายการแนะนำ'"
+                                        [data]="editModel.isHighlight"></ccb>
+                                    <ccb (cModel)="editModel.isPublic = $event" [label]="'เปิดสาธารณะ'"
+                                        [data]="editModel.isPublic"></ccb>
+                                </div>
                             </div>
                         </div>
 
                     </div>
+                </section>
+            </div>
+        </div>
+    </div>
 
-                    <!-- // <----- Organization -->
-                    <div class="card-panel" style="margin-bottom: 0px; margin-top: 0px;">
-                        <div class="row">
-                            <div class="col s12" style="padding-bottom: 40px !important;">
+    <div class="row">
+        <div class="col s12">
+            <div class="container">
+                <section class="users-list-wrapper section">
+                    <div class="users-list-filter">
 
-                                <ccb (cModel)="checkOG($event, 'auto')" [label]="'แสดงทั้งหมดตามสิทธิ์ที่รับมอบ'"
-                                    [data]="editModel.chkAutoOG"></ccb>
-                                <ccb (cModel)="checkOG($event, 'manual')" [label]="'แสดงเฉพาะหน่วยงานที่เลือก'"
-                                    [data]="editModel.chkManualOG"></ccb>
+                        <!-- Header -->
+                        <div class="card-panel"
+                            style="margin-bottom: 0px; background-color:lavender; vertical-align: text-top;">
 
-                                <!-- <ccb (cModel)="checkOrganization($event, 'byPass')" [label]="'ผู้ใช้งานทั้งหมด'"
+                            <div class="row">
+                                <div class="col s8">
+                                    <!-- <i class="material-icons header-icon">
+                                    border_color
+                                </i> -->
+                                    <span
+                                        style="position: relative; float:left; font-size: 1em; padding-left: 10px; padding-top: 10px;">
+                                        สิทธิ์การเห็นเนื้อหา *
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- // <----- Organization -->
+                        <div class="card-panel" style="margin-bottom: 0px; margin-top: 0px;">
+                            <div class="row">
+                                <div class="col s12" style="padding-bottom: 40px !important;">
+
+                                    <ccb (cModel)="checkOG($event, 'auto')" [label]="'แสดงทั้งหมดตามสิทธิ์ที่รับมอบ'"
+                                        [data]="editModel.chkAutoOG"></ccb>
+                                    <ccb (cModel)="checkOG($event, 'manual')" [label]="'แสดงเฉพาะหน่วยงานที่เลือก'"
+                                        [data]="editModel.chkManualOG"></ccb>
+
+                                    <!-- <ccb (cModel)="checkOrganization($event, 'byPass')" [label]="'ผู้ใช้งานทั้งหมด'"
                                     [data]="editModel.chkByPass"></ccb>
                                 <ccb (cModel)="checkOrganization($event, 'lv0')" [label]="'ระดับหน่วยงาน'"
                                     [data]="editModel.chkLv0"></ccb>
@@ -422,59 +441,59 @@
                                     [data]="editModel.chkLv2"></ccb>
                                 <ccb (cModel)="checkOrganization($event, 'lv3')" [label]="'ระดับตำบล/แขวง'"
                                     [data]="editModel.chkLv3"></ccb> -->
+                                </div>
                             </div>
-                        </div>
-                        <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
-                            *ngIf="editModel.chkManualOG && lv0Category.length != 0">
-                            <div class="col s12">
-                                <label>หน่วยงาน</label>
+                            <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
+                                *ngIf="editModel.chkManualOG && lv0Category.length != 0">
+                                <div class="col s12">
+                                    <label>หน่วยงาน</label>
+                                </div>
+                                <div class="col s12" *ngFor="let i of lv0Category; let idx = index">
+                                    <ccb (cModel)="readCategoryByLv($event, 'lv0', i)" [label]="i.title"
+                                        [data]="i.check"></ccb>
+                                </div>
                             </div>
-                            <div class="col s12" *ngFor="let i of lv0Category; let idx = index">
-                                <ccb (cModel)="readCategoryByLv($event, 'lv0', i)" [label]="i.title"
-                                    [data]="i.check"></ccb>
+                            <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
+                                *ngIf="editModel.chkManualOG && lv1Category.length != 0">
+                                <div class="col s12">
+                                    <label>เขต</label>
+                                </div>
+                                <div class="col s12" *ngFor="let i of lv1Category; let idx = index">
+                                    <ccb (cModel)="readCategoryByLv($event, 'lv1', i)" [label]="i.display"
+                                        [data]="i.check"></ccb>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
-                            *ngIf="editModel.chkManualOG && lv1Category.length != 0">
-                            <div class="col s12">
-                                <label>เขต</label>
+                            <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
+                                *ngIf="editModel.chkManualOG && lv2Category.length != 0">
+                                <div class="col s12">
+                                    <label>จังหวัด</label>
+                                </div>
+                                <div class="col s12" *ngFor="let i of lv2Category; let idx = index">
+                                    <ccb (cModel)="readCategoryByLv($event, 'lv2', i)" [label]="i.display"
+                                        [data]="i.check"></ccb>
+                                </div>
                             </div>
-                            <div class="col s12" *ngFor="let i of lv1Category; let idx = index">
-                                <ccb (cModel)="readCategoryByLv($event, 'lv1', i)" [label]="i.display"
-                                    [data]="i.check"></ccb>
+                            <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
+                                *ngIf="editModel.chkManualOG && lv3Category.length != 0">
+                                <div class="col s12">
+                                    <label>อำเภอ/เขต</label>
+                                </div>
+                                <div class="col s12" *ngFor="let i of lv3Category; let idx = index">
+                                    <ccb (cModel)="readCategoryByLv($event, 'lv3', i)" [label]="i.display"
+                                        [data]="i.check"></ccb>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
-                            *ngIf="editModel.chkManualOG && lv2Category.length != 0">
-                            <div class="col s12">
-                                <label>จังหวัด</label>
+                            <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
+                                *ngIf="editModel.chkManualOG && lv4Category.length != 0">
+                                <div class="col s12">
+                                    <label>ตำบล/แขวง</label>
+                                </div>
+                                <div class="col s12" *ngFor="let i of lv4Category; let idx = index">
+                                    <ccb (cModel)="readCategoryByLv($event, 'lv4', i)" [label]="i.display"
+                                        [data]="i.check"></ccb>
+                                </div>
                             </div>
-                            <div class="col s12" *ngFor="let i of lv2Category; let idx = index">
-                                <ccb (cModel)="readCategoryByLv($event, 'lv2', i)" [label]="i.display"
-                                    [data]="i.check"></ccb>
-                            </div>
-                        </div>
-                        <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
-                            *ngIf="editModel.chkManualOG && lv3Category.length != 0">
-                            <div class="col s12">
-                                <label>อำเภอ/เขต</label>
-                            </div>
-                            <div class="col s12" *ngFor="let i of lv3Category; let idx = index">
-                                <ccb (cModel)="readCategoryByLv($event, 'lv3', i)" [label]="i.display"
-                                    [data]="i.check"></ccb>
-                            </div>
-                        </div>
-                        <div class="row" style="padding-bottom: 40px; margin-top: 0px;"
-                            *ngIf="editModel.chkManualOG && lv4Category.length != 0">
-                            <div class="col s12">
-                                <label>ตำบล/แขวง</label>
-                            </div>
-                            <div class="col s12" *ngFor="let i of lv4Category; let idx = index">
-                                <ccb (cModel)="readCategoryByLv($event, 'lv4', i)" [label]="i.display"
-                                    [data]="i.check"></ccb>
-                            </div>
-                        </div>
-                        <!-- <div class="row">
+                            <!-- <div class="row">
                             สิทธิ์การเห็นเนื้อหา * :
                         </div>
                         <div class="row">
@@ -484,13 +503,13 @@
                             <ccb (cModel)="checkOrganization($event, 'lv2')" [label]="'ระดับจังหวัด'" [data]="editModel.chkLv2"></ccb>
                             <ccb (cModel)="checkOrganization($event, 'lv3')" [label]="'ระดับสาขา'" [data]="editModel.chkLv3"></ccb>
                         </div> -->
-                    </div>
+                        </div>
 
-                </div>
-            </section>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- END: Page Main-->

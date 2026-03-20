@@ -95,30 +95,30 @@
                                         </div>
 
                                         <div class="col s12">
-                                            <cinum (cModel)="editModel.trainingDuration = $event"
-                                                [label]="'ระยะเวลาที่ฝึก(ชั่วโมง) : '" [data]="editModel.trainingDuration || 0">
+                                            <cinum (cModel)="editModel.generation = $event"
+                                                [label]="'รุ่นที่ : '" [data]="editModel.generation || 0">
                                             </cinum>
                                         </div>
 
-                                        <div class="col s12" style="padding-bottom: 20px;">
+                                        <!-- <div class="col s12" style="padding-bottom: 20px;">
                                             <csop (cModel)="editModel.type = $event" [label]="'รูปแบบ : '"
                                                 [data]="editModel.type"
                                                 [sources]="[{ value: 'normal', display: 'ปกติ' }, { value: 'online', display: 'ออนไลน์' }]">
                                             </csop>
-                                        </div>
+                                        </div> -->
 
                                         <div class="col s12">
-                                            <cdp (cModel)="editModel.dateStart = $event" [label]="'วันที่เริ่มต้น'"
+                                            <cdp (cModel)="editModel.dateStart = $event" [label]="'วันทดสอบ'"
                                                 [data]="editModel.dateStart"></cdp>
                                         </div>
-                                        <div class="col s12">
+                                        <!-- <div class="col s12">
                                             <cdp (cModel)="editModel.dateEnd = $event" [label]="'วันที่สิ้นสุด'"
                                                 [data]="editModel.dateEnd"></cdp>
-                                        </div>
+                                        </div> -->
 
                                         <div class="col s12" style="padding-bottom: 20px;">
                                             <csop (cModel)="editModel.agency = $event" [label]="'หน่วยงาน : '"
-                                                [data]="editModel.agency" [sources]="listCategory">
+                                                [data]="editModel.agency" [sources]="listAgency">
                                             </csop>
                                         </div>
                                     </div>

@@ -59,6 +59,7 @@ export class AppComponent {
     reporterPage: false,
     welfarePage: false,
     trainingPage: false,
+    skilledLaborPage: false,
     warningPage: false,
     policyApplicationPage: false,
     policyMarketingPage: false,
@@ -152,6 +153,11 @@ export class AppComponent {
             this.serviceProviderService.post('register/page/read', { title: 'trainingPage' }).subscribe(data => {
               let model: any = data;
               localStorage.setItem('trainingPage', JSON.stringify(model.objectData));
+            }, err => { });
+
+                     this.serviceProviderService.post('register/page/read', { title: 'skilledLaborPage' }).subscribe(data => {
+              let model: any = data;
+              localStorage.setItem('skilledLaborPage', JSON.stringify(model.objectData));
             }, err => { });
 
             this.serviceProviderService.post('register/page/read', { title: 'welfarePage' }).subscribe(data => {
@@ -518,7 +524,7 @@ export class AppComponent {
       },
          {
         'name': 'ฝีมือแรงงาน',
-        'routing': '/training',
+        'routing': '/skilled-labor',
         'data': '',
         'type': 'N',
         'isActive': false,
@@ -956,6 +962,7 @@ export class AppComponent {
     localStorage.removeItem('reporterPage');
     localStorage.removeItem('welfarePage');
     localStorage.removeItem('trainingPage');
+    localStorage.removeItem('skilledLaborPage');
     localStorage.removeItem('warningPage');
     localStorage.removeItem('fundPage');
     localStorage.removeItem('cooperativeFormPage');

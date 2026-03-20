@@ -95,8 +95,8 @@
                                         </div>
 
                                         <div class="col s12">
-                                            <cinum (cModel)="editModel.trainingDuration = $event"
-                                                [label]="'ระยะเวลาที่ฝึก(ชั่วโมง) : '" [data]="editModel.trainingDuration || 0">
+                                            <cinum (cModel)="editModel.duration = $event"
+                                                [label]="'ระยะเวลาที่ฝึก(ชั่วโมง) : '" [data]="editModel.duration || 0">
                                             </cinum>
                                         </div>
 
@@ -118,7 +118,7 @@
 
                                         <div class="col s12" style="padding-bottom: 20px;">
                                             <csop (cModel)="editModel.agency = $event" [label]="'หน่วยงาน : '"
-                                                [data]="editModel.agency" [sources]="listCategory">
+                                                [data]="editModel.agency" [sources]="listAgency">
                                             </csop>
                                         </div>
                                     </div>

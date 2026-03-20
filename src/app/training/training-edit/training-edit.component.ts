@@ -22,6 +22,7 @@ import { PermissionService } from "src/app/shared/permission.service";
   styleUrls: ["./training-edit.component.css"],
 })
 export class TrainingEditComponent implements OnInit {
+  listAgency: any = [];
   listCategory: any = [];
   listRegister: any = [];
   editModel: any = { fileUrl: "", file: [], language: "th" };
@@ -79,6 +80,8 @@ export class TrainingEditComponent implements OnInit {
 
       this.permissionList = JSON.parse(localStorage.getItem("trainingPage"));
     }
+
+    this.readAgency(this.editModel.language);
 
     // this.editModel.image = [];
     this.activetedRoute.queryParams.subscribe((params) => {
@@ -146,17 +149,17 @@ export class TrainingEditComponent implements OnInit {
         (data) => {
           let model: any = {};
           model = data;
-          if (this.editModel.gallery.length > 0) {
-            this.editModel.gallery.forEach((element) => {
-              element.reference = model.objectData.code;
-              this.serviceProviderService
-                .post("training/gallery/create", element)
-                .subscribe(
-                  (data) => {},
-                  (err) => {},
-                );
-            });
-          }
+          // if (this.editModel.gallery.length > 0) {
+          //   this.editModel.gallery.forEach((element) => {
+          //     element.reference = model.objectData.code;
+          //     this.serviceProviderService
+          //       .post("training/gallery/create", element)
+          //       .subscribe(
+          //         (data) => {},
+          //         (err) => {},
+          //       );
+          //   });
+          // }
 
           /** spinner ends after 5 seconds */
           this.spinner.hide();
@@ -199,7 +202,7 @@ export class TrainingEditComponent implements OnInit {
             this.editModel.category = this.editModel.categoryList[0].code;
 
           this.readCategory(this.editModel.language);
-          this.galleryRead();
+          // this.galleryRead();
 
           // <----- Organization
           this.editModel.chkManualOG = true; // <----- Organization
@@ -312,18 +315,18 @@ export class TrainingEditComponent implements OnInit {
             .post("training/gallery/delete", this.editModel)
             .subscribe(
               (data) => {
-                if (this.editModel.gallery.length > 0) {
-                  this.editModel.gallery.forEach((element) => {
-                    // element.code = this.editModel.code; //เพิ่ม set active false ทั้วหมด
-                    element.reference = this.editModel.code;
-                    this.serviceProviderService
-                      .post("training/gallery/create", element)
-                      .subscribe(
-                        (data) => {},
-                        (err) => {},
-                      );
-                  });
-                }
+                // if (this.editModel.gallery.length > 0) {
+                //   this.editModel.gallery.forEach((element) => {
+                //     // element.code = this.editModel.code; //เพิ่ม set active false ทั้วหมด
+                //     element.reference = this.editModel.code;
+                //     this.serviceProviderService
+                //       .post("training/gallery/create", element)
+                //       .subscribe(
+                //         (data) => {},
+                //         (err) => {},
+                //       );
+                //   });
+                // }
               },
               (err) => {},
             );
@@ -359,6 +362,30 @@ export class TrainingEditComponent implements OnInit {
             this.listCategory = [];
             model.objectData.forEach((element) => {
               this.listCategory.push({
+                value: element.code,
+                display: element.title,
+              });
+            });
+          },
+          (err) => {},
+        );
+    }
+  }
+
+  readAgency(param) {
+    this.editModel.language = param;
+    if (this.editModel.language != "") {
+      this.serviceProviderService
+        .post("masterDropdown/readAgency", {
+          language: param,
+        })
+        .subscribe(
+          (data) => {
+            let model: any = {};
+            model = data;
+            this.listAgency = [];
+            model.objectData.forEach((element) => {
+              this.listAgency.push({
                 value: element.code,
                 display: element.title,
               });
