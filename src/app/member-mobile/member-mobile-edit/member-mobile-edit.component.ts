@@ -162,50 +162,50 @@ export class MemberMobileEditComponent implements OnInit {
     if (isValid)
       return;
 
-    if (this.editModel.department1) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัครป้องกันภัยฝ่ายพลเรือน'
-      } else {
-        this.editModel.countUnit = 'อาสาสมัครป้องกันภัยฝ่ายพลเรือน'
-      }
-    }
-    if (this.editModel.department2) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'เครือข่ายแจ้งเตือนภัยภาคประชาชน'
-      } else {
-        this.editModel.countUnit = 'เครือข่ายแจ้งเตือนภัยภาคประชาชน'
-      }
-    }
-    if (this.editModel.department3) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'มิสเตอร์เตือนภัย'
-      } else {
-        this.editModel.countUnit = 'มิสเตอร์เตือนภัย'
-      }
-    }
-    if (this.editModel.department4) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัคร หนึ่งตำบลหนึ่งทีมกู้ชีพกู้ภัย (OTOS)'
-      } else {
-        this.editModel.countUnit = 'อาสาสมัคร หนึ่งตำบลหนึ่งทีมกู้ชีพกู้ภัย (OTOS)'
-      }
-    }
-    if (this.editModel.department5) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัครป้องกันและสาธารณภัย (อส.ปภ)'
-      } else {
-        this.editModel.countUnit = 'อาสาสมัครป้องกันและสาธารณภัย (อส.ปภ)'
-      }
-    }
-    if (this.editModel.department6) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'องค์การสาธารณกุศล'
-      } else {
-        this.editModel.countUnit = 'องค์การสาธารณกุศล'
-      }
-    }
+    // if (this.editModel.department1) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัครป้องกันภัยฝ่ายพลเรือน'
+    //   } else {
+    //     this.editModel.countUnit = 'อาสาสมัครป้องกันภัยฝ่ายพลเรือน'
+    //   }
+    // }
+    // if (this.editModel.department2) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'เครือข่ายแจ้งเตือนภัยภาคประชาชน'
+    //   } else {
+    //     this.editModel.countUnit = 'เครือข่ายแจ้งเตือนภัยภาคประชาชน'
+    //   }
+    // }
+    // if (this.editModel.department3) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'มิสเตอร์เตือนภัย'
+    //   } else {
+    //     this.editModel.countUnit = 'มิสเตอร์เตือนภัย'
+    //   }
+    // }
+    // if (this.editModel.department4) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัคร หนึ่งตำบลหนึ่งทีมกู้ชีพกู้ภัย (OTOS)'
+    //   } else {
+    //     this.editModel.countUnit = 'อาสาสมัคร หนึ่งตำบลหนึ่งทีมกู้ชีพกู้ภัย (OTOS)'
+    //   }
+    // }
+    // if (this.editModel.department5) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัครป้องกันและสาธารณภัย (อส.ปภ)'
+    //   } else {
+    //     this.editModel.countUnit = 'อาสาสมัครป้องกันและสาธารณภัย (อส.ปภ)'
+    //   }
+    // }
+    // if (this.editModel.department6) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'องค์การสาธารณกุศล'
+    //   } else {
+    //     this.editModel.countUnit = 'องค์การสาธารณกุศล'
+    //   }
+    // }
 
-    this.editModel.countUnit = '[]';
+    // this.editModel.countUnit = '[]';
     this.editModel.category = 'guest';
 
     if (this.editModel.prefixName === 'นาย')
@@ -238,11 +238,11 @@ export class MemberMobileEditComponent implements OnInit {
       let model: any = {};
       model = data;
       this.editModel = model.objectData[0];
-      if(this.editModel.countUnit == '""' || this.editModel.countUnit == '[]' || this.editModel.countUnit == ''){
-        this.editModel.countUnit = [];
-      }else{
-        this.editModel.countUnit = JSON.parse(this.editModel.countUnit);
-      }
+      // if(this.editModel.countUnit == '""' || this.editModel.countUnit == '[]' || this.editModel.countUnit == ''){
+      //   this.editModel.countUnit = [];
+      // }else{
+      //   this.editModel.countUnit = JSON.parse(this.editModel.countUnit);
+      // }
       // this.editModel.countUnit.forEach(e => {
       //   this.lvModel.lv0Category = [];
       //   this.lvModel.lv1Category = [];
@@ -427,69 +427,69 @@ export class MemberMobileEditComponent implements OnInit {
       this.editModel.imageUrl = this.editModel.image[0].imageUrl;
     }
 
-    if (this.editModel.department1) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัครป้องกันภัยฝ่ายพลเรือน'
-      } else {
-        this.editModel.countUnit = 'อาสาสมัครป้องกันภัยฝ่ายพลเรือน'
-      }
-    }
-    if (this.editModel.department2) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'เครือข่ายแจ้งเตือนภัยภาคประชาชน'
-      } else {
-        this.editModel.countUnit = 'เครือข่ายแจ้งเตือนภัยภาคประชาชน'
-      }
-    }
-    if (this.editModel.department3) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'มิสเตอร์เตือนภัย'
-      } else {
-        this.editModel.countUnit = 'มิสเตอร์เตือนภัย'
-      }
-    }
-    if (this.editModel.department4) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัคร หนึ่งตำบลหนึ่งทีมกู้ชีพกู้ภัย (OTOS)'
-      } else {
-        this.editModel.countUnit = 'อาสาสมัคร หนึ่งตำบลหนึ่งทีมกู้ชีพกู้ภัย (OTOS)'
-      }
-    }
-    if (this.editModel.department5) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัครป้องกันและสาธารณภัย (อส.ปภ)'
-      } else {
-        this.editModel.countUnit = 'อาสาสมัครป้องกันและสาธารณภัย (อส.ปภ)'
-      }
-    }
-    if (this.editModel.department6) {
-      if (this.editModel.countUnit != '') {
-        this.editModel.countUnit = this.editModel.countUnit + ',' + 'องค์การสาธารณกุศล'
-      } else {
-        this.editModel.countUnit = 'องค์การสาธารณกุศล'
-      }
-    }
+    // if (this.editModel.department1) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัครป้องกันภัยฝ่ายพลเรือน'
+    //   } else {
+    //     this.editModel.countUnit = 'อาสาสมัครป้องกันภัยฝ่ายพลเรือน'
+    //   }
+    // }
+    // if (this.editModel.department2) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'เครือข่ายแจ้งเตือนภัยภาคประชาชน'
+    //   } else {
+    //     this.editModel.countUnit = 'เครือข่ายแจ้งเตือนภัยภาคประชาชน'
+    //   }
+    // }
+    // if (this.editModel.department3) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'มิสเตอร์เตือนภัย'
+    //   } else {
+    //     this.editModel.countUnit = 'มิสเตอร์เตือนภัย'
+    //   }
+    // }
+    // if (this.editModel.department4) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัคร หนึ่งตำบลหนึ่งทีมกู้ชีพกู้ภัย (OTOS)'
+    //   } else {
+    //     this.editModel.countUnit = 'อาสาสมัคร หนึ่งตำบลหนึ่งทีมกู้ชีพกู้ภัย (OTOS)'
+    //   }
+    // }
+    // if (this.editModel.department5) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'อาสาสมัครป้องกันและสาธารณภัย (อส.ปภ)'
+    //   } else {
+    //     this.editModel.countUnit = 'อาสาสมัครป้องกันและสาธารณภัย (อส.ปภ)'
+    //   }
+    // }
+    // if (this.editModel.department6) {
+    //   if (this.editModel.countUnit != '') {
+    //     this.editModel.countUnit = this.editModel.countUnit + ',' + 'องค์การสาธารณกุศล'
+    //   } else {
+    //     this.editModel.countUnit = 'องค์การสาธารณกุศล'
+    //   }
+    // }
 
-    this.editModel.lv0 = '';
-    this.editModel.lv1 = '';
-    this.editModel.lv2 = '';
-    this.editModel.lv3 = '';
-    this.editModel.lv4 = '';
+    // this.editModel.lv0 = '';
+    // this.editModel.lv1 = '';
+    // this.editModel.lv2 = '';
+    // this.editModel.lv3 = '';
+    // this.editModel.lv4 = '';
     
-    this.editModel.organization = 'manual';
-    if(this.editModel.countUnit.length > 0){
-      this.editModel.countUnit.forEach( e => {
-        if(e.status == 'A'){
-          this.replaceCategoryLv0(e);
-          this.replaceCategoryLv1(e);
-          this.replaceCategoryLv2(e);
-          this.replaceCategoryLv3(e);
-          this.replaceCategoryLv4(e);
-        }
-      });
-    }
+    // this.editModel.organization = 'manual';
+    // if(this.editModel.countUnit.length > 0){
+    //   this.editModel.countUnit.forEach( e => {
+    //     if(e.status == 'A'){
+    //       this.replaceCategoryLv0(e);
+    //       this.replaceCategoryLv1(e);
+    //       this.replaceCategoryLv2(e);
+    //       this.replaceCategoryLv3(e);
+    //       this.replaceCategoryLv4(e);
+    //     }
+    //   });
+    // }
 
-    this.editModel.countUnit = JSON.stringify(this.editModel.countUnit);
+    // this.editModel.countUnit = JSON.stringify(this.editModel.countUnit);
     if (this.editModel.prefixName === 'นาย')
       this.editModel.sex = 'ชาย'
     else

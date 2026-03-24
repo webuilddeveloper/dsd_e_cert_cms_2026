@@ -192,10 +192,9 @@
 
 
 <!-- BEGIN: Organization -->
-<div class="row">
+<!-- <div class="row">
   <div class="container">
     <div class="col s12">
-      <!-- Header -->
       <div class="card-panel" style="margin-bottom: 0px; background-color:lavender; vertical-align: text-top;">
 
           <div class="row">
@@ -213,12 +212,9 @@
           </div>
 
       </div>
-      <!-- Detail -->
       <div class="card-panel" style="margin-top: 0px; margin-bottom: 0px;">
         <div class="row">
           <div class="col s12">
-            <!-- {{ lvModel | json }} -->
-            <!-- datatable start -->
             <div style="overflow-x:auto;">
               <table id="users-list-datatable" class="bordered centered striped">
                 <thead>
@@ -263,8 +259,6 @@
                                 <mat-option *ngFor="let o of [{value:'A',display: 'ยืนยัน'},{value:'J',display:'ไม่ผ่าน'}]" value="{{o.value}}">{{o.display}}</mat-option>
                             </mat-select>
                         </mat-form-field>
-                        <!-- <cbtn [label]="'ลบ'" [color]="'red'" [icon]="'delete'" (click)="deleteOrganizationItem(idx)">
-                        </cbtn> -->
                       </div>
                     </td>
                     <td>
@@ -331,26 +325,23 @@
                         <span class="chip yellow lighten-5" *ngIf="i.status == 'R'">
                           <span class="red-text">รอการตรวจสอบ</span>
                         </span>
-                        <!-- Reject -->
                         <span class="chip red lighten-5" *ngIf="i.status == 'J'">
                           <span class="red-text">ยืนยันตนไม่สำเร็จ</span>
                         </span>
                       </div>
 
                     </td>
-                    <!-- <td><cbtnd (click)="delete(i, idx)"></cbtnd></td> -->
                   </tr>
                 </tbody>
               </table>
             </div>
-            <!-- datatable ends -->
           </div>
         </div>
       </div>
 
     </div>
   </div>
-</div>
+</div> -->
 <!-- END: Organization -->
 
 <div class="row">
