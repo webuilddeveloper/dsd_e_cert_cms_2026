@@ -113,6 +113,11 @@ export class EventEditComponent implements OnInit {
     if (this.editModel.title == "") {
       this.toastr.warning("กรุณาใส่หัวข้อ", "แจ้งเตือนระบบ", { timeOut: 2000 });
       isValid = true;
+    } 
+
+    if (this.editModel.titleEN == "") {
+      this.toastr.warning("กรุณาใส่หัวข้ออังกฤษ", "แจ้งเตือนระบบ", { timeOut: 2000 });
+      isValid = true;
     }
 
     if (isValid) return;

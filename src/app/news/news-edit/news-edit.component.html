@@ -122,12 +122,25 @@
                       <citxt (cModel)="editModel.title = $event" [label]="'* หัวข้อ : '" [data]="editModel.title || ''">
                       </citxt>
                     </div>
+                  </div>  
+                  <div class="row">
+                    <div class="col s12">
+                      <citxt (cModel)="editModel.titleEN = $event" [label]="'* หัวข้ออังกฤษ : '" [data]="editModel.titleEN || ''">
+                      </citxt>
+                    </div>
+                  </div> 
+
+                   <div class="row">
+                    <div class="col s12" style="margin-top: -15px !important;">
+                      <citxt (cModel)="editModel.textButton = $event" [label]="'ชื่อปุ่มแหล่งอ้างอิง : '"
+                        [data]="editModel.textButton || ''"></citxt>
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="col s12" style="margin-top: -15px !important;">
-                      <citxt (cModel)="editModel.textButton = $event" [label]="'ชื่อปุ่มแหล่งอ้างอิง : '"
-                        [data]="editModel.textButton || ''"></citxt>
+                      <citxt (cModel)="editModel.textButtonEN = $event" [label]="'ชื่อปุ่มแหล่งอ้างอิงอังกฤษ  : '"
+                        [data]="editModel.textButtonEN || ''"></citxt>
                     </div>
                   </div>
 
@@ -276,6 +289,12 @@
                     <div class="col s12">
                       <ctxte (cModel)="editModel.description = $event" [label]="'รายละเอียด : '"
                         [data]="editModel.description || ''"></ctxte>
+                    </div>
+                  </div> 
+                    <div class="row">
+                    <div class="col s12">
+                      <ctxte (cModel)="editModel.descriptionEN = $event" [label]="'รายละเอียดอังกฤษ : '"
+                        [data]="editModel.descriptionEN || ''"></ctxte>
                     </div>
                   </div>
 

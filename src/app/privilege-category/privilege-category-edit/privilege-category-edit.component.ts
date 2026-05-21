@@ -45,6 +45,10 @@ export class PrivilegeCategoryEditComponent implements OnInit {
       this.toastr.warning('กรุณาใส่หัวข้อ', 'แจ้งเตือนระบบ', { timeOut: 2000 });
       isValid = true;
     }
+     if (this.editModel.titleEN == '') {
+      this.toastr.warning('กรุณาใส่หัวข้ออังกฤษ', 'แจ้งเตือนระบบ', { timeOut: 2000 });
+      isValid = true;
+    }
 
     if (this.editModel.image.length == 0) {
       this.toastr.warning('กรุณาใส่รูปภาพ', 'แจ้งเตือนระบบ', { timeOut: 2000 });

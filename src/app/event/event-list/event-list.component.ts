@@ -147,7 +147,7 @@ export class EventListComponent implements OnInit {
           }
         })
         
-        this.serviceProviderService.post('event/delete', { code: model }).subscribe(data => {
+        this.serviceProviderService.post('eventCalendar/delete', { code: model }).subscribe(data => {
           this.toastr.success('ลบรายการเรียบร้อย', 'แจ้งเตือนระบบ', { timeOut: 2000 });
           setTimeout(() => {
             window.location.reload()
