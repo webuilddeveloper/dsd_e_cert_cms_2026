@@ -94,6 +94,12 @@
                                             <citxt (cModel)="editModel.title = $event" [label]="'หัวข้อ : '"
                                                 [data]="editModel.title || ''" [readonly]="code != ''"></citxt>
                                         </div>
+                                    </div> 
+                                      <div class="row">
+                                        <div class="col s12" style="padding-bottom: 10px !important;">
+                                            <citxt (cModel)="editModel.titleEN = $event" [label]="'หัวข้ออังกฤษ : '"
+                                                [data]="editModel.titleEN || ''" [readonly]="code != ''"></citxt>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -174,6 +180,13 @@
                                             <!-- <textarea [(ngModel)]="editModel.description" class="materialize-textarea" readonly></textarea> -->
                                             <ctxte (cModel)="editModel.description = $event" [label]="'รายละเอียด : '"
                                                 [data]="editModel.description || ''" [editable]="code == ''"></ctxte>
+                                        </div>
+                                    </div> 
+                                      <div class="row">
+                                        <div class="col s12">
+                                            <!-- <textarea [(ngModel)]="editModel.description" class="materialize-textarea" readonly></textarea> -->
+                                            <ctxte (cModel)="editModel.descriptionEN = $event" [label]="'รายละเอียดอังกฤษ : '"
+                                                [data]="editModel.descriptionEN || ''" [editable]="code == ''"></ctxte>
                                         </div>
                                     </div>
 
